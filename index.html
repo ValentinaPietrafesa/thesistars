@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>The Sistars AR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Librerías -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+
+    <style>
+      body, html {
+        margin: 0;
+        overflow: hidden;
+        height: 100%;
+        background: black;
+      }
+      .loading {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-family: sans-serif;
+        background: rgba(0,0,0,0.8);
+        z-index: 10;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="loading" id="loading">Cargando cámara...</div>
+
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;"
+      vr-mode-ui="enabled: false"
+      renderer="antialias: true; alpha: true"
+      loading-screen="enabled: false"
+      id="scene">
+
+      <a-camera position="0 1.6 0"></a-camera>
+
+      <!-- Imágenes flotando alrededor del usuario -->
+      <a-image src="images/img1.png" position="0 1.5 -2" rotation="0 0 0" width="1" height="1"></a-image>
+      <a-image src="images/img2.png" position="2 1.5 0" rotation="0 -90 0" width="1" height="1"></a-image>
+      <a-image src="images/img3.png" position="-2 1.5 0" rotation="0 90 0" width="1" height="1"></a-image>
+      <a-image src="images/img4.png" position="0 1.5 2" rotation="0 180 0" width="1" height="1"></a-image>
+      <a-image src="images/img5.png" position="0 3 0" rotation="-90 0 0" width="1" height="1"></a-image>
+    </a-scene>
+
+    <script>
+      // Oculta el cartel de carga después de unos segundos
+      window.addEventListener('load', () => {
+        const loading = document.getElementById('loading');
+        setTimeout(() => loading.style.display = 'none', 1500);
+      });
+
+      // --- 🔧 Mostrar IP local para abrir desde el celular ---
+      fetch('https://api.ipify.org?format=json')
+        .then(res => res.json())
+        .then(data => {
+          console.log("%c🌐 Abre este link en tu celular:", "color: #00ffcc; font-weight: bold;");
+          console.log(`👉 http://${data.ip}:5500`);
+          console.log("Cambiá el :5500 por el puerto que te aparezca en Live Server si es distinto.");
+        })
+        .catch(() => {
+          console.log("Podés ver tu IP local escribiendo 'ipconfig' en la consola de Windows.");
+        });
+    </script>
+  </body>
+</html>
