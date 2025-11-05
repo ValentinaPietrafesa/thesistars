@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>The Sistars AR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Librerías -->
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
@@ -24,6 +24,7 @@
         align-items: center;
         color: white;
         font-family: sans-serif;
+        background-color: rgba(0, 0, 0, 0.6);
         z-index: 10;
       }
     </style>
@@ -34,11 +35,12 @@
 
     <a-scene
       embedded
-      arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;"
+      arjs="sourceType: webcam; facingMode: environment; trackingMethod: best; debugUIEnabled: false;"
       vr-mode-ui="enabled: false"
-      renderer="antialias: true; alpha: true"
+      renderer="antialias: true; alpha: true; precision: mediump;"
       loading-screen="enabled: false"
-      id="scene">
+      id="scene"
+      style="background-color: transparent !important;">
 
       <a-camera position="0 1.6 0"></a-camera>
 
@@ -57,7 +59,7 @@
         setTimeout(() => loading.style.display = 'none', 1500);
       });
 
-      // --- 🔧 Mostrar IP local para abrir desde el celular ---
+      // Mostrar IP local en consola para pruebas
       fetch('https://api.ipify.org?format=json')
         .then(res => res.json())
         .then(data => {
