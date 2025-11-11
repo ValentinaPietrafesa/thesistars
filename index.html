@@ -46,17 +46,17 @@
       <a-camera position="0 1.6 0"></a-camera>
 
       <!-- Grupo de imágenes -->
-      <!-- Alejado un poco más para Android -->
-      <a-entity position="0 0 -6.5" rotation="0 0 0">
+      <!-- Ahora un poco más lejos (de -6.5 a -7.5) -->
+      <a-entity position="0 0 -7.5" rotation="0 0 0">
 
-        <!-- Imagen central (más grande) -->
-        <a-image src="images/album.png" position="0 1.5 0" width="1.2" height="1.2"></a-image>
+        <!-- Imagen central (más grande que antes) -->
+        <a-image src="images/album.png" position="0 1.5 0" width="1.35" height="1.35"></a-image>
 
-        <!-- Imágenes alrededor (mismo tamaño que antes) -->
-        <a-image src="images/secreto.png" position="0 2.6 0" width="0.5" height="0.5"></a-image>
-        <a-image src="images/sinti.png" position="-1.3 1.5 0" width="0.5" height="0.5"></a-image>
-        <a-image src="images/novuelvas.png" position="1.3 1.5 0" width="0.5" height="0.5"></a-image>
-        <a-image src="images/mialma.png" position="0 0.6 0" width="0.5" height="0.5"></a-image>
+        <!-- Imágenes alrededor (ligeramente más grandes también) -->
+        <a-image src="images/secreto.png" position="0 2.6 0" width="0.55" height="0.55"></a-image>
+        <a-image src="images/sinti.png" position="-1.3 1.5 0" width="0.55" height="0.55"></a-image>
+        <a-image src="images/novuelvas.png" position="1.3 1.5 0" width="0.55" height="0.55"></a-image>
+        <a-image src="images/mialma.png" position="0 0.6 0" width="0.55" height="0.55"></a-image>
 
       </a-entity>
     </a-scene>
@@ -67,9 +67,11 @@
         const loading = document.getElementById('loading');
         setTimeout(() => loading.style.display = 'none', 1500);
       });
-     // Ajuste de escala según sistema operativo
+
+      // Ajuste de escala según sistema operativo
       const isAndroid = /Android/i.test(navigator.userAgent);
       const scaleFactor = isAndroid ? 0.8 : 1; // reduce un poco en Android
+
       // Mostrar IP local en consola (para pruebas locales)
       fetch('https://api.ipify.org?format=json')
         .then(res => res.json())
@@ -83,4 +85,5 @@
         });
     </script>
   </body>
+</html>
 </html>
