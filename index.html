@@ -35,9 +35,9 @@
 
     <a-scene
       embedded
-      arjs="sourceType: webcam; facingMode: environment; trackingMethod: best; debugUIEnabled: false;"
-      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false; cameraParametersUrl: https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/examples/marker-training/examples/camera_para.dat;"
       renderer="antialias: true; alpha: true; precision: high; logarithmicDepthBuffer: true;"
+      vr-mode-ui="enabled: false"
       loading-screen="enabled: false"
       id="scene"
       style="background-color: transparent !important;">
@@ -45,17 +45,17 @@
       <!-- Cámara -->
       <a-camera position="0 1.6 0"></a-camera>
 
-      <!-- Grupo de imágenes (más lejos y centrado de frente) -->
-      <a-entity position="0 0 -14" rotation="0 0 0">
+      <!-- Grupo de imágenes -->
+      <a-entity position="0 0 -16" rotation="0 0 0" device-adjust>
 
         <!-- Imagen central (álbum, más grande) -->
-        <a-image src="images/album.png" position="0 1.5 0" width="2" height="2"></a-image>
+        <a-image src="images/album.png" position="0 1.5 0" width="1.35" height="1.35"></a-image>
 
-        <!-- Imágenes alrededor (un poco más grandes también) -->
-        <a-image src="images/secreto.png" position="0 3.2 0" width="0.9" height="0.9"></a-image>
-        <a-image src="images/sinti.png" position="-2 1.5 0" width="0.9" height="0.9"></a-image>
-        <a-image src="images/novuelvas.png" position="2 1.5 0" width="0.9" height="0.9"></a-image>
-        <a-image src="images/mialma.png" position="0 -0.1 0" width="0.9" height="0.9"></a-image>
+        <!-- Imágenes alrededor -->
+        <a-image src="images/secreto.png" position="0 2.7 0" width="0.6" height="0.6"></a-image>
+        <a-image src="images/sinti.png" position="-1.45 1.5 0" width="0.6" height="0.6"></a-image>
+        <a-image src="images/novuelvas.png" position="1.45 1.5 0" width="0.6" height="0.6"></a-image>
+        <a-image src="images/mialma.png" position="0 0.4 0" width="0.6" height="0.6"></a-image>
 
       </a-entity>
     </a-scene>
@@ -67,9 +67,24 @@
         setTimeout(() => loading.style.display = 'none', 1500);
       });
 
-      // Ajuste de escala según sistema operativo
-      const isAndroid = /Android/i.test(navigator.userAgent);
-      const scaleFactor = isAndroid ? 0.8 : 1;
+      // Ajuste automático según sistema operativo
+      AFRAME.registerComponent('device-adjust', {
+        init: function () {
+          const entity = this.el;
+          const isAndroid = /Android/i.test(navigator.userAgent);
+          const isApple = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+          if (isAndroid) {
+            // Android → plano más lejos y leve aumento de tamaño
+            entity.setAttribute('position', '0 0 -19');
+            entity.setAttribute('scale', '1.15 1.15 1.15');
+          } else if (isApple) {
+            // iPhone → mantiene valores estándar
+            entity.setAttribute('position', '0 0 -16');
+            entity.setAttribute('scale', '1 1 1');
+          }
+        }
+      });
 
       // Mostrar IP local en consola (para pruebas locales)
       fetch('https://api.ipify.org?format=json')
