@@ -37,7 +37,7 @@
       embedded
       arjs="sourceType: webcam; facingMode: environment; trackingMethod: best; debugUIEnabled: false;"
       vr-mode-ui="enabled: false"
-      renderer="antialias: true; alpha: true; precision: mediump;"
+      renderer="antialias: true; alpha: true; precision: high; logarithmicDepthBuffer: true;"
       loading-screen="enabled: false"
       id="scene"
       style="background-color: transparent !important;">
@@ -45,29 +45,30 @@
       <!-- Cámara -->
       <a-camera position="0 1.6 0"></a-camera>
 
-      <!-- Grupo de imágenes (un poco más alejado y centrado) -->
-      <a-entity position="0 0 -6" rotation="0 0 0">
+      <!-- Grupo de imágenes -->
+      <!-- Alejado un poco más para Android -->
+      <a-entity position="0 0 -6.5" rotation="0 0 0">
 
-        <!-- Imagen central -->
-        <a-image src="images/album.png" position="0 1.5 0" width="0.7" height="0.7"></a-image>
+        <!-- Imagen central (más grande) -->
+        <a-image src="images/album.png" position="0 1.5 0" width="1.2" height="1.2"></a-image>
 
-        <!-- Imágenes alrededor -->
-        <a-image src="images/secreto.png" position="0 2.4 0" width="0.55" height="0.55"></a-image>
-        <a-image src="images/sinti.png" position="-1.0 1.5 0" width="0.55" height="0.55"></a-image>
-        <a-image src="images/novuelvas.png" position="1.0 1.5 0" width="0.55" height="0.55"></a-image>
-        <a-image src="images/mialma.png" position="0 0.6 0" width="0.55" height="0.55"></a-image>
+        <!-- Imágenes alrededor (mismo tamaño que antes) -->
+        <a-image src="images/secreto.png" position="0 2.6 0" width="0.5" height="0.5"></a-image>
+        <a-image src="images/sinti.png" position="-1.3 1.5 0" width="0.5" height="0.5"></a-image>
+        <a-image src="images/novuelvas.png" position="1.3 1.5 0" width="0.5" height="0.5"></a-image>
+        <a-image src="images/mialma.png" position="0 0.6 0" width="0.5" height="0.5"></a-image>
 
       </a-entity>
     </a-scene>
 
     <script>
-      // Oculta el cartel de carga después de unos segundos
+      // Oculta el cartel de carga
       window.addEventListener('load', () => {
         const loading = document.getElementById('loading');
         setTimeout(() => loading.style.display = 'none', 1500);
       });
 
-      // Mostrar IP local en consola para pruebas
+      // Mostrar IP local en consola (para pruebas locales)
       fetch('https://api.ipify.org?format=json')
         .then(res => res.json())
         .then(data => {
