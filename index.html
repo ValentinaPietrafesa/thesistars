@@ -24,7 +24,6 @@
         align-items: center;
         color: white;
         font-family: sans-serif;
-        background-color: rgba(0, 0, 0, 0.6);
         z-index: 10;
       }
     </style>
@@ -42,18 +41,20 @@
       id="scene"
       style="background-color: transparent !important;">
 
-      <!-- Cámara ajustada para un campo de visión más amplio -->
-      <a-camera position="0 1 0" fov="100"></a-camera>
+      <!-- Cámara (igual que antes) -->
+      <a-camera position="0 1.6 0"></a-camera>
 
-      <!-- Grupo de imágenes escalado -->
-      <a-entity scale="0.4 0.4 0.4">
-        <a-image src="images/img1.png" position="0 1.5 -2" rotation="0 0 0" width="0.35" height="0.35"></a-image>
-        <a-image src="images/img2.png" position="1.5 1.5 0" rotation="0 -90 0" width="0.35" height="0.35"></a-image>
-        <a-image src="images/img3.png" position="-1.5 1.5 0" rotation="0 90 0" width="0.35" height="0.35"></a-image>
-        <a-image src="images/img4.png" position="0 1.5 1.5" rotation="0 180 0" width="0.35" height="0.35"></a-image>
-        <a-image src="images/img5.png" position="0 2.5 0" rotation="-90 0 0" width="0.35" height="0.35"></a-image>
-      </a-entity>
-    </a-scene>
+      <!-- Grupo de imágenes -->
+      <a-entity position="0 0 0">
+
+        <!-- Imagen central -->
+        <a-image src="images/album.png" position="0 1.5 -3.5" width="0.5" height="0.5"></a-image>
+
+        <!-- Imágenes alrededor (más chicas y más cerca) -->
+        <a-image src="images/secreto.png" position="0 2.3 -3.5" width="0.4" height="0.4"></a-image>
+        <a-image src="images/sinti.png" position="-0.7 1.5 -3.5" width="0.4" height="0.4"></a-image>
+        <a-image src="images/novuelvas.png" position="0.7 1.5 -3.5" width="0.4" height="0.4"></a-image>
+        <a-image src="images/mialma.png" position="0 0.7 -3.5" width="0.4" height="0.4"></a-image>
 
     <script>
       // Oculta el cartel de carga después de unos segundos
