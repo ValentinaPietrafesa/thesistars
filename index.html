@@ -25,6 +25,7 @@
         color: white;
         font-family: sans-serif;
         z-index: 10;
+        background-color: rgba(0,0,0,0.6);
       }
     </style>
   </head>
@@ -41,7 +42,7 @@
       id="scene"
       style="background-color: transparent !important;">
 
-      <!-- Cámara (igual que antes) -->
+      <!-- Cámara -->
       <a-camera position="0 1.6 0"></a-camera>
 
       <!-- Grupo de imágenes -->
@@ -50,11 +51,14 @@
         <!-- Imagen central -->
         <a-image src="images/album.png" position="0 1.5 -3.5" width="0.5" height="0.5"></a-image>
 
-        <!-- Imágenes alrededor (más chicas y más cerca) -->
+        <!-- Imágenes alrededor -->
         <a-image src="images/secreto.png" position="0 2.3 -3.5" width="0.4" height="0.4"></a-image>
         <a-image src="images/sinti.png" position="-0.7 1.5 -3.5" width="0.4" height="0.4"></a-image>
         <a-image src="images/novuelvas.png" position="0.7 1.5 -3.5" width="0.4" height="0.4"></a-image>
         <a-image src="images/mialma.png" position="0 0.7 -3.5" width="0.4" height="0.4"></a-image>
+
+      </a-entity>
+    </a-scene>
 
     <script>
       // Oculta el cartel de carga después de unos segundos
