@@ -75,13 +75,13 @@
           const isApple = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
           if (isAndroid) {
-            // Android → más lejos
+            // Android → igual que antes
             entity.setAttribute('position', '0 0 -19');
             entity.setAttribute('scale', '1.15 1.15 1.15');
           } else if (isApple) {
-            // Apple → MUCHO más cerca y un poco más grande
-            entity.setAttribute('position', '0 0 -8.5');
-            entity.setAttribute('scale', '1.35 1.35 1.35');
+            // Apple → más cerca y un poco más grande
+            entity.setAttribute('position', '0 0 -6.8');
+            entity.setAttribute('scale', '1.55 1.55 1.55');
           }
         }
       });
