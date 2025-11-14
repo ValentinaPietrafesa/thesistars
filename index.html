@@ -5,9 +5,11 @@
     <title>The Sistars AR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Librerías -->
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <!-- A-FRAME 1.6.0 (última compatible con AR.js 3.4.7) -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <!-- AR.js 3.4.7 (última versión estable) -->
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.min.js"></script>
 
     <style>
       body, html {
@@ -35,8 +37,8 @@
 
     <a-scene
       embedded
-      arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false; cameraParametersUrl: https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/examples/marker-training/examples/camera_para.dat;"
-      renderer="antialias: true; alpha: true; precision: high; logarithmicDepthBuffer: true;"
+      arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;"
+      renderer="antialias: true; alpha: true; precision: medium;"
       vr-mode-ui="enabled: false"
       loading-screen="enabled: false"
       id="scene"
@@ -75,28 +77,18 @@
           const isApple = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
           if (isAndroid) {
-            // ANDROID → un poco más lejos para que no se vea enorme
-            entity.setAttribute('position', '0 0 -30');
-            entity.setAttribute('scale', '1.15 1.15 1.15');
+            // ANDROID: ahora sí funciona bien con AR.js 3.4.7
+            entity.setAttribute('position', '0 0 -26');
+            entity.setAttribute('scale', '1.2 1.2 1.2');
+            entity.setAttribute('rotation', '0 0 0');
           } else if (isApple) {
-            // APPLE → más cerca y más de frente
-            entity.setAttribute('position', '0 -0.3 -5.5');
-            entity.setAttribute('rotation', '-5 0 0');
+            // APPLE: mejor frontal, menos inclinación
+            entity.setAttribute('position', '0 -0.2 -5.2');
             entity.setAttribute('scale', '1.55 1.55 1.55');
+            entity.setAttribute('rotation', '-3 0 0');
           }
         }
       });
-
-      // Mostrar IP local en consola (para pruebas locales)
-      fetch('https://api.ipify.org?format=json')
-        .then(res => res.json())
-        .then(data => {
-          console.log("%c🌐 Abre este link en tu celular:", "color: #00ffcc; font-weight: bold;");
-          console.log(`👉 http://${data.ip}:5500`);
-          console.log("Cambiá el :5500 por el puerto que te aparezca en Live Server si es distinto.");
-        })
-        .catch(() => {
-          console.log("Podés ver tu IP local escribiendo 'ipconfig' en la consola de Windows.");
-        });
     </script>
   </body>
+</html>
