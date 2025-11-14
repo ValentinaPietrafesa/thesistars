@@ -24,8 +24,9 @@
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
         if (isMobile) {
-          this.el.object3D.position.z = -6; 
-          this.el.object3D.position.y = -1.5;
+          // En mobile los aleja aún más para que no queden gigantes
+          this.el.object3D.position.z -= 10; 
+          this.el.object3D.position.y -= 1.5;
         }
       },
     });
@@ -35,14 +36,12 @@
 
 <body>
 
-  <!-- ⭐ SOLO UNA ESCENA (IMPORTANTE) -->
   <a-scene
     embedded
     renderer="alpha: true; antialias: true; logarithmicDepthBuffer: true;"
     vr-mode-ui="enabled: false"
     loading-screen="enabled: false"
     style="background: transparent !important;"
-
     arjs="trackingMethod: best;
           debugUIEnabled: false;
           sourceType: webcam;
@@ -50,15 +49,15 @@
           sourceWidth: 1280;
           sourceHeight: 720;
           displayWidth: 1280;
-          displayHeight: 720;"
-  >
-
-    <!-- 📸 Cámara -->
+          displayHeight: 720;">
+    
     <a-entity camera></a-entity>
 
+    <!-- MARCADOR -->
+    <a-marker type="pattern" url="marker.patt">
 
-      <!-- 📦 CONTENEDOR GENERAL (alejado y más abajo) -->
-      <a-entity position="0 -5 -15" device-adjust>
+      <!-- CONTENEDOR GENERAL (YA ALEJADO) -->
+      <a-entity position="0 -5 -25" device-adjust>
 
         <!-- ALBUM -->
         <a-image 
@@ -101,7 +100,6 @@
         </a-image>
 
       </a-entity>
-
     </a-marker>
 
   </a-scene>
