@@ -8,7 +8,7 @@
   <!-- A-Frame -->
   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 
-  <!-- AR.js FULL (incluye image tracking y fixes) -->
+  <!-- AR.js FULL -->
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
   <style>
@@ -18,7 +18,6 @@
     }
   </style>
 
-  <!-- FIX ANDROID: inicia la cámara correctamente -->
   <script>
     window.ARjs = window.ARjs || {};
     window.ARjs.ImageTracking = {
@@ -28,15 +27,14 @@
     };
   </script>
 
-  <!-- Ajuste general del dispositivo (ya incluido en tu código previo) -->
   <script>
     AFRAME.registerComponent("device-adjust", {
       init: function () {
         const isMobile =
           /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
         if (isMobile) {
-          this.el.object3D.position.z = -5; 
-          this.el.object3D.position.y = 0;
+          this.el.object3D.position.z = -7; 
+          this.el.object3D.position.y = -0.5;
         }
       },
     });
@@ -62,53 +60,52 @@
           displayHeight: 720;"
   >
 
-    <!-- 📸 Cámara universal (iPhone + Android) -->
     <a-entity camera="active: true" arjs-camera></a-entity>
 
-   <!-- 📦 Tus imágenes posicionadas (corregido) -->
-<a-entity position="0 0 -8" rotation="0 0 0" device-adjust>
+    <!-- 🧩 BLOQUE COMPLETO MUCHO MÁS LEJOS Y MÁS ABAJO -->
+    <a-entity position="0 -1.2 -14" rotation="0 0 0" device-adjust>
 
-  <!-- ALBUM (más lejos y centrado) -->
-  <a-image
-    src="images/album.png"
-    position="0 1.6 0"
-    width="1.8"
-    height="1.8"
-  ></a-image>
+      <!-- ALBUM (centro más arriba) -->
+      <a-image
+        src="images/album.png"
+        position="0 2.5 0"
+        width="2.0"
+        height="2.0"
+      ></a-image>
 
-  <!-- SECRETO (arriba) -->
-  <a-image
-    src="images/secreto.png"
-    position="0 3.0 0"
-    width="0.75"
-    height="0.75"
-  ></a-image>
+      <!-- SECRETO (mucho más arriba) -->
+      <a-image
+        src="images/secreto.png"
+        position="0 4.6 0"
+        width="0.95"
+        height="0.95"
+      ></a-image>
 
-  <!-- SIN TI (izquierda) -->
-  <a-image
-    src="images/sinti.png"
-    position="-2.0 1.6 0"
-    width="0.75"
-    height="0.75"
-  ></a-image>
+      <!-- SIN TI (izquierda lejos) -->
+      <a-image
+        src="images/sinti.png"
+        position="-3.2 2.5 0"
+        width="0.95"
+        height="0.95"
+      ></a-image>
 
-  <!-- NO VUELVAS (derecha) -->
-  <a-image
-    src="images/novuelvas.png"
-    position="2.0 1.6 0"
-    width="0.75"
-    height="0.75"
-  ></a-image>
+      <!-- NO VUELVAS (derecha lejos) -->
+      <a-image
+        src="images/novuelvas.png"
+        position="3.2 2.5 0"
+        width="0.95"
+        height="0.95"
+      ></a-image>
 
-  <!-- MI ALMA (abajo) -->
-  <a-image
-    src="images/mialma.png"
-    position="0 0.3 0"
-    width="0.75"
-    height="0.75"
-  ></a-image>
+      <!-- MI ALMA (más abajo todavía) -->
+      <a-image
+        src="images/mialma.png"
+        position="0 0.8 0"
+        width="0.95"
+        height="0.95"
+      ></a-image>
 
-</a-entity>
+    </a-entity>
 
   </a-scene>
 
