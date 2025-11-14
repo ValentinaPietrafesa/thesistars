@@ -65,45 +65,50 @@
     <!-- 📸 Cámara universal (iPhone + Android) -->
     <a-entity camera="active: true" arjs-camera></a-entity>
 
-    <!-- 📦 Tus imágenes posicionadas -->
-    <a-entity position="0 0 -10" rotation="0 0 0" device-adjust>
+   <!-- 📦 Tus imágenes posicionadas (corregido) -->
+<a-entity position="0 0 -8" rotation="0 0 0" device-adjust>
 
-      <a-image
-        src="images/album.png"
-        position="0 1.5 0"
-        width="1.35"
-        height="1.35"
-      ></a-image>
+  <!-- ALBUM (más lejos y centrado) -->
+  <a-image
+    src="images/album.png"
+    position="0 1.6 0"
+    width="1.8"
+    height="1.8"
+  ></a-image>
 
-      <a-image
-        src="images/secreto.png"
-        position="0 2.7 0"
-        width="0.6"
-        height="0.6"
-      ></a-image>
+  <!-- SECRETO (arriba) -->
+  <a-image
+    src="images/secreto.png"
+    position="0 3.0 0"
+    width="0.75"
+    height="0.75"
+  ></a-image>
 
-      <a-image
-        src="images/sinti.png"
-        position="-1.45 1.5 0"
-        width="0.6"
-        height="0.6"
-      ></a-image>
+  <!-- SIN TI (izquierda) -->
+  <a-image
+    src="images/sinti.png"
+    position="-2.0 1.6 0"
+    width="0.75"
+    height="0.75"
+  ></a-image>
 
-      <a-image
-        src="images/novuelvas.png"
-        position="1.45 1.5 0"
-        width="0.6"
-        height="0.6"
-      ></a-image>
+  <!-- NO VUELVAS (derecha) -->
+  <a-image
+    src="images/novuelvas.png"
+    position="2.0 1.6 0"
+    width="0.75"
+    height="0.75"
+  ></a-image>
 
-      <a-image
-        src="images/mialma.png"
-        position="0 0.4 0"
-        width="0.6"
-        height="0.6"
-      ></a-image>
+  <!-- MI ALMA (abajo) -->
+  <a-image
+    src="images/mialma.png"
+    position="0 0.3 0"
+    width="0.75"
+    height="0.75"
+  ></a-image>
 
-    </a-entity>
+</a-entity>
 
   </a-scene>
 
