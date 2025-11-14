@@ -5,17 +5,16 @@
     <title>The Sistars AR</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- A-FRAME 1.6.0 (última compatible con AR.js 3.4.7) -->
+    <!-- Librerías nuevas compatibles -->
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-
-    <!-- AR.js 3.4.7 (última versión estable) -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.7/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.7/aframe/build/aframe-ar.js"></script>
 
     <style>
       body, html {
         margin: 0;
         overflow: hidden;
         height: 100%;
+        background: transparent !important;
       }
       .loading {
         position: fixed;
@@ -35,25 +34,30 @@
   <body>
     <div class="loading" id="loading">Cargando cámara...</div>
 
-    <a-scene
+    <a-scene 
       embedded
-      arjs="sourceType: webcam; trackingMethod: best; debugUIEnabled: false;"
-      renderer="antialias: true; alpha: true; precision: medium;"
       vr-mode-ui="enabled: false"
       loading-screen="enabled: false"
-      id="scene"
-      style="background-color: transparent !important;">
+      renderer="antialias: true; alpha: true; logarithmicDepthBuffer: true;"
+      style="background: transparent !important;"
+      
+      arjs="
+        sourceType: webcam;
+        trackingMethod: best;
+        debugUIEnabled: false;
+        patternRatio: 0.9;
+        displayWidth: 1280;
+        displayHeight: 720;
+      "
+    >
 
-      <!-- Cámara -->
-      <a-camera position="0 1.6 0"></a-camera>
+      <a-camera></a-camera>
 
       <!-- Grupo de imágenes -->
-      <a-entity position="0 0 -16" rotation="0 0 0" device-adjust>
+      <a-entity position="0 0 -10" rotation="0 0 0" device-adjust>
 
-        <!-- Imagen central (álbum, más grande) -->
         <a-image src="images/album.png" position="0 1.5 0" width="1.35" height="1.35"></a-image>
 
-        <!-- Imágenes alrededor -->
         <a-image src="images/secreto.png" position="0 2.7 0" width="0.6" height="0.6"></a-image>
         <a-image src="images/sinti.png" position="-1.45 1.5 0" width="0.6" height="0.6"></a-image>
         <a-image src="images/novuelvas.png" position="1.45 1.5 0" width="0.6" height="0.6"></a-image>
@@ -63,31 +67,25 @@
     </a-scene>
 
     <script>
-      // Oculta el cartel de carga
-      window.addEventListener('load', () => {
-        const loading = document.getElementById('loading');
-        setTimeout(() => loading.style.display = 'none', 1500);
+      window.addEventListener("load", () => {
+        const loading = document.getElementById("loading");
+        setTimeout(() => (loading.style.display = "none"), 1500);
       });
 
-      // Ajuste automático según sistema operativo
-      AFRAME.registerComponent('device-adjust', {
+      AFRAME.registerComponent("device-adjust", {
         init: function () {
           const entity = this.el;
           const isAndroid = /Android/i.test(navigator.userAgent);
           const isApple = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
           if (isAndroid) {
-            // ANDROID: ahora sí funciona bien con AR.js 3.4.7
-            entity.setAttribute('position', '0 0 -26');
-            entity.setAttribute('scale', '1.2 1.2 1.2');
-            entity.setAttribute('rotation', '0 0 0');
+            entity.setAttribute("position", "0 0 -32");
+            entity.setAttribute("scale", "0.9 0.9 0.9");
           } else if (isApple) {
-            // APPLE: mejor frontal, menos inclinación
-            entity.setAttribute('position', '0 -0.2 -5.2');
-            entity.setAttribute('scale', '1.55 1.55 1.55');
-            entity.setAttribute('rotation', '-3 0 0');
+            entity.setAttribute("position", "0 0 -6.2");
+            entity.setAttribute("scale", "1.55 1.55 1.55");
           }
-        }
+        },
       });
     </script>
   </body>
