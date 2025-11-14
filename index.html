@@ -53,56 +53,19 @@
     
     <a-entity camera></a-entity>
 
-    <!-- MARCADOR -->
-    <a-marker type="pattern" url="marker.patt">
 
-      <!-- CONTENEDOR GENERAL (YA ALEJADO) -->
-      <a-entity position="0 -5 -25" device-adjust>
+  <!-- SIN MARCADOR — SIEMPRE VISIBLE -->
+  <a-entity position="0 -5 -25" device-adjust>
 
-        <!-- ALBUM -->
-        <a-image 
-          src="images/album.png"
-          position="0 1.8 0"
-          width="2.2"
-          height="2.2">
-        </a-image>
+    <a-image src="images/album.png" position="0 1.8 0" width="2.2" height="2.2"></a-image>
+    <a-image src="images/secreto.png" position="0 4.0 0" width="1.1" height="1.1"></a-image>
+    <a-image src="images/sinti.png" position="-3.2 1.8 0" width="1.1" height="1.1"></a-image>
+    <a-image src="images/novuelvas.png" position="3.2 1.8 0" width="1.1" height="1.1"></a-image>
+    <a-image src="images/mialma.png" position="0 0.3 0" width="1.1" height="1.1"></a-image>
 
-        <!-- SECRETO -->
-        <a-image 
-          src="images/secreto.png"
-          position="0 4.0 0"
-          width="1.1"
-          height="1.1">
-        </a-image>
+  </a-entity>
 
-        <!-- SIN TI -->
-        <a-image 
-          src="images/sinti.png"
-          position="-3.2 1.8 0"
-          width="1.1"
-          height="1.1">
-        </a-image>
-
-        <!-- NO VUELVAS -->
-        <a-image 
-          src="images/novuelvas.png"
-          position="3.2 1.8 0"
-          width="1.1"
-          height="1.1">
-        </a-image>
-
-        <!-- MI ALMA -->
-        <a-image 
-          src="images/mialma.png"
-          position="0 0.3 0"
-          width="1.1"
-          height="1.1">
-        </a-image>
-
-      </a-entity>
-    </a-marker>
-
-  </a-scene>
+</a-scene>
 
 </body>
 </html>
