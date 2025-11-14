@@ -59,55 +59,63 @@
           displayWidth: 1280;
           displayHeight: 720;"
   >
+ <a-scene
+    embedded
+    renderer="alpha:true; antialias:true;"
+    vr-mode-ui="enabled:false"
+    arjs="trackingMethod: best; sourceType: webcam;"
+  >
 
-    <a-entity camera="active: true" arjs-camera></a-entity>
+    <!-- 📸 Cámara -->
+    <a-entity camera></a-entity>
 
-    <!-- 🧩 BLOQUE COMPLETO MUCHO MÁS LEJOS Y MÁS ABAJO -->
-    <a-entity position="0 -1.2 -14" rotation="0 0 0" device-adjust>
+    <!-- 📍 MARCADOR — AHORA TODO FUNCIONA -->
+    <a-marker type="pattern" url="pattern-marker.patt">
 
-      <!-- ALBUM (centro más arriba) -->
-      <a-image
-        src="images/album.png"
-        position="0 2.5 0"
-        width="2.0"
-        height="2.0"
-      ></a-image>
+      <a-entity position="0 -0.5 -4">
 
-      <!-- SECRETO (mucho más arriba) -->
-      <a-image
-        src="images/secreto.png"
-        position="0 4.6 0"
-        width="0.95"
-        height="0.95"
-      ></a-image>
+        <!-- ALBUM -->
+        <a-image 
+          src="images/album.png"
+          position="0 1.7 0"
+          width="2"
+          height="2">
+        </a-image>
 
-      <!-- SIN TI (izquierda lejos) -->
-      <a-image
-        src="images/sinti.png"
-        position="-3.2 2.5 0"
-        width="0.95"
-        height="0.95"
-      ></a-image>
+        <!-- SECRETO -->
+        <a-image 
+          src="images/secreto.png"
+          position="0 3.7 0"
+          width="1"
+          height="1">
+        </a-image>
 
-      <!-- NO VUELVAS (derecha lejos) -->
-      <a-image
-        src="images/novuelvas.png"
-        position="3.2 2.5 0"
-        width="0.95"
-        height="0.95"
-      ></a-image>
+        <!-- SIN TI -->
+        <a-image 
+          src="images/sinti.png"
+          position="-3 1.7 0"
+          width="1"
+          height="1">
+        </a-image>
 
-      <!-- MI ALMA (más abajo todavía) -->
-      <a-image
-        src="images/mialma.png"
-        position="0 0.8 0"
-        width="0.95"
-        height="0.95"
-      ></a-image>
+        <!-- NO VUELVAS -->
+        <a-image 
+          src="images/novuelvas.png"
+          position="3 1.7 0"
+          width="1"
+          height="1">
+        </a-image>
 
-    </a-entity>
+        <!-- MI ALMA -->
+        <a-image 
+          src="images/mialma.png"
+          position="0 0.2 0"
+          width="1"
+          height="1">
+        </a-image>
+
+      </a-entity>
+
+    </a-marker>
 
   </a-scene>
-
-</body>
-</html>
